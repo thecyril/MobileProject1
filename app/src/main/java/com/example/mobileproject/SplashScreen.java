@@ -1,28 +1,29 @@
 package com.example.mobileproject;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import gr.net.maroulis.library.EasySplashScreen;
 
-public class SplashScreen extends AppCompatActivity {
+public class SplashScreen extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.splash_main);
 
-        EasySplashScreen config = new EasySplashScreen(SplashScreen.this)
-                .withFullScreen()
-                .withTargetActivity(MainActivity.class)
-                .withSplashTimeOut(2000)
-                .withLogo(R.drawable.img_boot_resizeimage)
-                .withAfterLogoText("My ostro My");
-
-        //Set to view
-        View view = config.create();
-
-        //Set view to content view
-        setContentView(view);
+        int SPLASH_DURATION = 2000;
+        new Handler().postDelayed(new Runnable(){
+            @Override
+            public void run() {
+                /* Create an Intent that will start the Menu-Activity. */
+                Intent mainIntent = new Intent(SplashScreen.this, MainActivity.class);
+                SplashScreen.this.startActivity(mainIntent);
+                SplashScreen.this.finish();
+            }
+        }, SPLASH_DURATION);
     }
 }

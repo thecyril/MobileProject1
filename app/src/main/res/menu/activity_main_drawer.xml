@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <item
+        android:id="@+id/app_bar_switch"
+        android:icon="@android:drawable/ic_popup_reminder"
+        android:title="Alarm On / Off"
+        app:actionLayout="@layout/switch_item" />
+
+    <group android:visible="true">
+        <item
+            android:id="@+id/Home"
+            android:icon="@drawable/ic_baseline_home_24px"
+            android:title="Home" />
         <item
             android:id="@+id/Datepicker"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_baseline_date"
             android:title="Date Picker" />
         <item
             android:id="@+id/nav_gallery"
@@ -22,7 +33,9 @@
             android:title="Tools" />
     </group>
 
-    <item android:title="Communicate">
+    <item
+        android:checkable="false"
+        android:title="Communicate">
         <menu>
             <item
                 android:id="@+id/nav_share"
